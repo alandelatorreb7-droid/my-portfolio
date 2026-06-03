@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alan de la Torre | Civil Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #000000;
+      --bg-card:    #0d0d0d;
+      --bg-card2:   #131313;
+      --border:     #1c1c1c;
+      --border-mid: #2e2e2e;
+      --white:      #ffffff;
+      --gray:       #888888;
+      --gray-dim:   #555555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--white);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      color: var(--white);
+      font-weight: 700;
+      font-size: .68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: color .15s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--white);
+      transition: .3s;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 100px 3rem 7rem;
+    }
+
+    .hero-inner { max-width: 1100px; width: 100%; }
+
+    .hero-eyebrow {
+      font-size: .65rem;
+      color: var(--gray);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-inner h1 {
+      font-size: clamp(3.8rem, 11.5vw, 9rem);
+      color: var(--white);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      line-height: 0.88;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 2rem;
+      margin-bottom: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-meta {
+      font-size: .7rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-meta-sep {
+      color: var(--border-mid);
+      font-size: .65rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--white);
+      text-decoration: none;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      padding-bottom: 3px;
+      transition: border-color .15s;
+    }
+
+    .hero-cta:hover { border-color: var(--white); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 7rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    section#hero { border-top: none; }
+
+    .container { max-width: 900px; }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 3.5px;
+      font-size: .62rem;
+      color: var(--gray-dim);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      color: var(--white);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      margin-bottom: 4rem;
+      line-height: .95;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: #c0c0c0;
+      font-size: .93rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .about-highlights {
+      border-left: 1px solid var(--border-mid);
+      padding-left: 2.5rem;
+    }
+
+    .highlight-item { margin-bottom: 2rem; }
+    .highlight-item:last-child { margin-bottom: 0; }
+
+    .hi-text strong {
+      display: block;
+      font-size: .82rem;
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: .3rem;
+      letter-spacing: .3px;
+    }
+
+    .hi-text span {
+      font-size: .75rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      padding: 1.5rem 1.75rem;
+      transition: background .15s;
+    }
+
+    .skill-card:hover { background: var(--bg-card2); }
+
+    .skill-name {
+      font-weight: 700;
+      font-size: .83rem;
+      color: var(--white);
+      margin-bottom: .3rem;
+      letter-spacing: .2px;
+    }
+
+    .skill-cat {
+      font-size: .68rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .tl-item { background: var(--bg); }
+
+    .tl-card { padding: 2.25rem 2.25rem; }
+
+    .tl-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: .9rem;
+    }
+
+    .tl-role {
+      font-size: .92rem;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .tl-company {
+      font-size: .75rem;
+      color: var(--gray);
+      margin-top: .3rem;
+      letter-spacing: .3px;
+    }
+
+    .tl-date {
+      font-size: .62rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      white-space: nowrap;
+      border: 1px solid var(--border-mid);
+      padding: .25rem .75rem;
+    }
+
+    .tl-desc {
+      font-size: .86rem;
+      color: #aaaaaa;
+      line-height: 1.75;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2.75rem 2.5rem;
+    }
+
+    .edu-school {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .45rem;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+    }
+
+    .edu-degree {
+      font-size: .88rem;
+      color: #c0c0c0;
+      font-weight: 400;
+      margin-bottom: .45rem;
+    }
+
+    .edu-date {
+      font-size: .68rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .honors-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+    .honor-badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border-mid);
+      color: #aaaaaa;
+      padding: .3rem .9rem;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── RELOCATION ── */
+    .relocation-intro {
+      color: var(--gray);
+      font-size: .72rem;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .cities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .city-card {
+      background: var(--bg-card);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      transition: background .15s;
+      cursor: default;
+    }
+
+    .city-card:hover { background: var(--bg-card2); }
+    .city-card.open-card { opacity: .45; }
+
+    .city-name {
+      font-weight: 800;
+      font-size: .85rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: .3rem;
+    }
+
+    .city-state {
+      font-size: .65rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { text-align: left; }
+
+    .contact-sub {
+      color: var(--gray);
+      margin-bottom: 3.5rem;
+      font-size: .86rem;
+      line-height: 1.85;
+      max-width: 500px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      display: inline-flex;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .65rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: background .15s, color .15s;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover { background: #e8e8e8; }
+
+    .btn-outline {
+      background: var(--bg-card);
+      color: var(--white);
+    }
+
+    .btn-outline:hover { background: var(--bg-card2); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--gray-dim);
+      font-size: .62rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 52px; left: 0; right: 0;
+        background: var(--bg);
+        padding: 2rem 1.5rem;
+        gap: 1.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+
+      #hero { padding: 80px 1.5rem 5rem; }
+      section { padding: 5rem 1.5rem; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-highlights {
+        border-left: none;
+        border-top: 1px solid var(--border-mid);
+        padding-left: 0;
+        padding-top: 2.5rem;
+      }
+
+      .tl-header { flex-direction: column; }
+      .edu-card { padding: 1.75rem 1.5rem; }
+      .contact-links { display: flex; flex-direction: column; }
+      .contact-btn { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-meta-row { gap: .5rem 1.25rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .cities-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Alan de la Torre</span>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#relocation">Relocation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Civil Engineering Portfolio</p>
+    <h1>Alan de la Torre</h1>
+    <div class="hero-meta-row">
+      <span class="hero-meta">El Paso, TX</span>
+      <span class="hero-meta-sep">/</span>
+      <span class="hero-meta">Bilingual EN / ES</span>
+      <span class="hero-meta-sep">/</span>
+      <span class="hero-meta">OSHA-30 Certified</span>
+      <span class="hero-meta-sep">/</span>
+      <span class="hero-meta">AI-Integrated Engineer</span>
+    </div>
+    <a href="#contact" class="hero-cta">Get in Touch &rarr;</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">Who I Am</p>
+    <h2>About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I am a bilingual Civil Engineering senior at the University of Texas at El Paso, set to graduate in December 2026.
+          My background bridges two cities and two engineering cultures: hands-on construction experience in Ciudad Juarez,
+          Mexico, and current professional work at Leggett &amp; Platt in El Paso.
+        </p>
+        <p>
+          What sets me apart is my enthusiasm for pairing traditional civil engineering disciplines &mdash; structural analysis,
+          water treatment design, and project management &mdash; with emerging AI tools. I believe the engineers who thrive in the
+          next decade will be the ones who learn to work alongside intelligent systems, and I am already doing exactly that.
+        </p>
+        <p>
+          I am actively seeking full-time opportunities where I can bring both technical rigor and a forward-thinking mindset
+          to infrastructure, construction, or consulting projects.
+        </p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="hi-text">
+            <strong>Dean's List Academic Record</strong>
+            <span>Recognized Fall 2022 &amp; Spring 2025 at UTEP</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-text">
+            <strong>Cross-Border Experience</strong>
+            <span>Construction work in Ciudad Juarez; currently in El Paso</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-text">
+            <strong>Currently at Leggett &amp; Platt</strong>
+            <span>Engineering role in El Paso, TX</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-text">
+            <strong>AI-Augmented Workflow</strong>
+            <span>Using Claude Code &amp; GitHub in day-to-day engineering</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-text">
+            <strong>OSHA-30 Certified</strong>
+            <span>Full 30-hour general industry &amp; construction safety</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">What I Bring</p>
+    <h2>Skills &amp; Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-name">AutoCAD</div>
+        <div class="skill-cat">Design &amp; Drafting</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">RISA 2D</div>
+        <div class="skill-cat">Structural Software</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Structural Analysis</div>
+        <div class="skill-cat">Core Engineering</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Water Treatment Design</div>
+        <div class="skill-cat">Environmental / Civil</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">OSHA-30</div>
+        <div class="skill-cat">Safety &amp; Compliance</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Claude Code</div>
+        <div class="skill-cat">AI Engineering Tools</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">GitHub</div>
+        <div class="skill-cat">Version Control</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Bilingual EN / ES</div>
+        <div class="skill-cat">Communication</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Career History</p>
+    <h2>Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Engineer (Current)</div>
+              <div class="tl-company">Leggett &amp; Platt &mdash; El Paso, TX</div>
+            </div>
+            <div class="tl-date">Present</div>
+          </div>
+          <p class="tl-desc">
+            Contributing to engineering operations at a leading diversified manufacturer. Applying civil and structural
+            engineering principles in an industrial environment while continuing final year of studies at UTEP.
+          </p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Engineer Assistant</div>
+              <div class="tl-company">Construction Projects &mdash; Ciudad Juarez, Mexico</div>
+            </div>
+            <div class="tl-date">Prior Experience</div>
+          </div>
+          <p class="tl-desc">
+            Gained hands-on construction experience on active project sites in Ciudad Juarez. Responsibilities included
+            field inspections, blueprint reading, coordinating with contractors, and applying structural analysis knowledge
+            in a real-world cross-border environment.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">Academic Background</p>
+    <h2>Education</h2>
+    <div class="edu-card">
+      <div class="edu-school">University of Texas at El Paso (UTEP)</div>
+      <div class="edu-degree">Bachelor of Science &mdash; Civil Engineering</div>
+      <div class="edu-date">Expected Graduation: December 2026</div>
+      <div class="honors-row">
+        <span class="honor-badge">Dean's List &mdash; Fall 2022</span>
+        <span class="honor-badge">Dean's List &mdash; Spring 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELOCATION -->
+<section id="relocation">
+  <div class="container">
+    <p class="section-label">Where I Can Go</p>
+    <h2>Open to Relocation</h2>
+    <p class="relocation-intro">
+      Currently based in El Paso, TX &mdash; open to major metro markets across the United States.
+    </p>
+    <div class="cities-grid">
+      <div class="city-card">
+        <div class="city-name">Austin</div>
+        <div class="city-state">Texas</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">Dallas</div>
+        <div class="city-state">Texas</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">New York</div>
+        <div class="city-state">New York</div>
+      </div>
+      <div class="city-card">
+        <div class="city-name">Miami</div>
+        <div class="city-state">Florida</div>
+      </div>
+      <div class="city-card open-card">
+        <div class="city-name" style="font-size:.78rem;">Open to More</div>
+        <div class="city-state">Let's talk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Let's Connect</p>
+    <h2>Contact</h2>
+    <p class="contact-sub">
+      Graduating December 2026 and actively seeking full-time opportunities in civil engineering.<br>
+      Reach out &mdash; I would love to connect.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:alan.delatorreb7@gmail.com" class="contact-btn btn-primary">
+        alan.delatorreb7@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener" class="contact-btn btn-outline">
+        LinkedIn
+      </a>
+      <a href="https://github.com/" target="_blank" rel="noopener" class="contact-btn btn-outline">
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Alan de la Torre &mdash; Civil Engineering Portfolio</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const links    = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.style.color = '');
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.style.color = '#ffffff';
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
