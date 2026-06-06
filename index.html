@@ -319,6 +319,20 @@
       padding: 2.75rem 2.5rem;
     }
 
+    .edu-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .edu-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
     .edu-school {
       font-size: 1.05rem;
       font-weight: 800;
@@ -355,6 +369,131 @@
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
+    }
+
+    /* ── PROJECTS ── */
+    .proj-tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .55rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .proj-tag {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid var(--border-mid);
+      padding: .22rem .7rem;
+    }
+
+    .proj-subhead {
+      font-size: .62rem;
+      font-weight: 700;
+      color: var(--gray-dim);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 1.5rem;
+      margin-bottom: .65rem;
+    }
+
+    .proj-body {
+      font-size: .86rem;
+      color: #aaaaaa;
+      line-height: 1.75;
+    }
+
+    .proj-list {
+      font-size: .86rem;
+      color: #aaaaaa;
+      line-height: 1.75;
+      padding-left: 1.1em;
+    }
+
+    .proj-list li { margin-bottom: .4rem; }
+    .proj-list li:last-child { margin-bottom: 0; }
+
+    .proj-link-row {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 1.75rem;
+    }
+
+    /* ── PROJECT LAYOUT ── */
+    #projects .container { max-width: 1500px; }
+
+    .proj-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .proj-visuals {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      position: sticky;
+      top: 72px;
+    }
+
+    .proj-visuals .proj-subhead { margin-top: 0; }
+
+    .screenshot-frame {
+      border: 1px solid var(--border-mid);
+      overflow: hidden;
+      background: var(--bg-card2);
+    }
+
+    .screenshot-chrome {
+      background: #111111;
+      padding: .42rem .72rem;
+      display: flex;
+      align-items: center;
+      gap: .32rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshot-chrome span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .screenshot-chrome span:nth-child(1) { background: #ff5f57; }
+    .screenshot-chrome span:nth-child(2) { background: #febc2e; }
+    .screenshot-chrome span:nth-child(3) { background: #28c840; }
+
+    .screenshot-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity .2s;
+    }
+
+    .screenshot-frame img:hover { opacity: .85; }
+
+    @media (max-width: 960px) {
+      .proj-layout {
+        grid-template-columns: 1fr;
+      }
+      .proj-visuals {
+        position: static;
+        flex-direction: row;
+      }
+      .proj-visuals .screenshot-frame { flex: 1; }
+      .proj-visuals .proj-subhead { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .proj-visuals { flex-direction: column; }
     }
 
     /* ── RELOCATION ── */
@@ -502,6 +641,68 @@
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .cities-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ── ANIMATED GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      animation: gridScroll 30s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridScroll {
+      0%   { background-position: 0 0; }
+      100% { background-position: 64px 64px; }
+    }
+
+    /* ── FADE IN ON SCROLL ── */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── PROJECT CARD LIFT ── */
+    #projects .tl-item {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #projects .tl-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ── TYPEWRITER CURSOR ── */
+    .tw-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 0.78em;
+      background: var(--white);
+      margin-left: 5px;
+      vertical-align: middle;
+      animation: twBlink 0.75s step-end infinite;
+    }
+
+    .tw-cursor.tw-done {
+      opacity: 0;
+      transition: opacity 0.4s ease 0.3s;
+    }
+
+    @keyframes twBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -514,6 +715,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#relocation">Relocation</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -690,13 +892,94 @@
     <p class="section-label">Academic Background</p>
     <h2>Education</h2>
     <div class="edu-card">
-      <div class="edu-school">University of Texas at El Paso (UTEP)</div>
-      <div class="edu-degree">Bachelor of Science &mdash; Civil Engineering</div>
-      <div class="edu-date">Expected Graduation: December 2026</div>
+      <div class="edu-header">
+        <img src="assets/utep-logo.png" alt="UTEP logo" class="edu-logo" />
+        <div>
+          <div class="edu-school">University of Texas at El Paso (UTEP)</div>
+          <div class="edu-degree">Bachelor of Science &mdash; Civil Engineering</div>
+          <div class="edu-date">Expected Graduation: December 2026</div>
+        </div>
+      </div>
       <div class="honors-row">
         <span class="honor-badge">Dean's List &mdash; Fall 2022</span>
         <span class="honor-badge">Dean's List &mdash; Spring 2025</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">What I've Built</p>
+    <h2>Projects</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="proj-layout">
+
+            <!-- LEFT: content -->
+            <div class="proj-content">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-role">BuildRight &mdash; Construction Cost Estimator</div>
+                  <div class="proj-tech-row">
+                    <span class="proj-tag">React</span>
+                    <span class="proj-tag">Node.js</span>
+                    <span class="proj-tag">PostgreSQL</span>
+                    <span class="proj-tag">Deployed on Railway</span>
+                  </div>
+                </div>
+                <div class="tl-date">Jan 2026 &mdash; Present</div>
+              </div>
+
+              <p class="proj-subhead">Overview</p>
+              <p class="proj-body">A full stack web application that helps El Paso, TX contractors build professional construction cost estimates in minutes. Built and deployed solo from scratch.</p>
+
+              <p class="proj-subhead">The Problem It Solves</p>
+              <p class="proj-body">Most small contractors in El Paso rely on spreadsheets or pen and paper to estimate project costs &mdash; a slow and error-prone process. BuildRight reduces a 30&ndash;60 minute task to under 10 minutes with locally researched prices, automatic calculations, and a professional PDF output ready to hand directly to a client.</p>
+
+              <p class="proj-subhead">Key Features</p>
+              <ul class="proj-list">
+                <li>280+ locally researched El Paso material and labor prices</li>
+                <li>Professional PDF quote generator with company branding and signature lines</li>
+                <li>Built-in concrete cubic yard calculator</li>
+                <li>Project templates for common residential jobs</li>
+                <li>Admin panel to manage and update prices</li>
+              </ul>
+
+              <div class="proj-link-row">
+                <a href="https://buildright-production.up.railway.app" target="_blank" rel="noopener" class="contact-btn btn-primary">
+                  Live App
+                </a>
+                <a href="https://github.com/alandelatorreb7-droid/BuildRight" target="_blank" rel="noopener" class="contact-btn btn-outline">
+                  GitHub
+                </a>
+              </div>
+            </div>
+
+            <!-- RIGHT: screenshots -->
+            <div class="proj-visuals">
+              <p class="proj-subhead">Screenshots</p>
+              <div class="screenshot-frame">
+                <div class="screenshot-chrome">
+                  <span></span><span></span><span></span>
+                </div>
+                <img src="assets/buildright-landing.png.png" alt="BuildRight landing page" loading="lazy" />
+              </div>
+              <div class="screenshot-frame">
+                <div class="screenshot-chrome">
+                  <span></span><span></span><span></span>
+                </div>
+                <img src="assets/buildright-app.png.png" alt="BuildRight estimator interface" loading="lazy" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -788,6 +1071,48 @@
   }, { rootMargin: '-40% 0px -55% 0px' });
 
   sections.forEach(s => observer.observe(s));
+</script>
+
+<script>
+  /* ── TYPEWRITER ── */
+  (function () {
+    const h1 = document.querySelector('#hero h1');
+    const fullText = h1.textContent.trim();
+    h1.textContent = '';
+
+    const cursor = document.createElement('span');
+    cursor.className = 'tw-cursor';
+    h1.appendChild(cursor);
+
+    let idx = 0;
+    function tick() {
+      if (idx < fullText.length) {
+        h1.insertBefore(document.createTextNode(fullText[idx]), cursor);
+        idx++;
+        setTimeout(tick, 72);
+      } else {
+        cursor.classList.add('tw-done');
+      }
+    }
+    setTimeout(tick, 350);
+  })();
+
+  /* ── FADE IN ON SCROLL ── */
+  (function () {
+    const fadeSections = document.querySelectorAll('section:not(#hero)');
+    fadeSections.forEach(s => s.classList.add('fade-in-section'));
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    fadeSections.forEach(s => fadeObserver.observe(s));
+  })();
 </script>
 </body>
 </html>
