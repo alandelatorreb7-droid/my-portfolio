@@ -496,50 +496,6 @@
       .proj-visuals { flex-direction: column; }
     }
 
-    /* ── RELOCATION ── */
-    .relocation-intro {
-      color: var(--gray);
-      font-size: .72rem;
-      margin-bottom: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .cities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .city-card {
-      background: var(--bg-card);
-      padding: 1.75rem 1.25rem;
-      text-align: center;
-      transition: background .15s;
-      cursor: default;
-    }
-
-    .city-card:hover { background: var(--bg-card2); }
-    .city-card.open-card { opacity: .45; }
-
-    .city-name {
-      font-weight: 800;
-      font-size: .85rem;
-      color: var(--white);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      margin-bottom: .3rem;
-    }
-
-    .city-state {
-      font-size: .65rem;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
     /* ── CONTACT ── */
     #contact { text-align: left; }
 
@@ -639,7 +595,6 @@
     @media (max-width: 480px) {
       .hero-meta-row { gap: .5rem 1.25rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
-      .cities-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ── ANIMATED GRID BACKGROUND ── */
@@ -716,7 +671,6 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#relocation">Relocation</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -815,14 +769,6 @@
         <div class="skill-cat">Structural Software</div>
       </div>
       <div class="skill-card">
-        <div class="skill-name">Structural Analysis</div>
-        <div class="skill-cat">Core Engineering</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-name">Water Treatment Design</div>
-        <div class="skill-cat">Environmental / Civil</div>
-      </div>
-      <div class="skill-card">
         <div class="skill-name">OSHA-30</div>
         <div class="skill-cat">Safety &amp; Compliance</div>
       </div>
@@ -837,6 +783,14 @@
       <div class="skill-card">
         <div class="skill-name">Bilingual EN / ES</div>
         <div class="skill-cat">Communication</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Microsoft Office</div>
+        <div class="skill-cat">Productivity</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Microsoft Teams</div>
+        <div class="skill-cat">Collaboration</div>
       </div>
     </div>
   </div>
@@ -853,14 +807,22 @@
         <div class="tl-card">
           <div class="tl-header">
             <div>
-              <div class="tl-role">Engineer (Current)</div>
+              <div class="tl-role">Order Fulfillment Associate</div>
               <div class="tl-company">Leggett &amp; Platt &mdash; El Paso, TX</div>
             </div>
-            <div class="tl-date">Present</div>
+            <div class="tl-date">Nov 2025 &mdash; Present</div>
           </div>
+          <p class="tl-desc" style="margin-bottom:1rem;">
+            Worked in a high-volume warehouse environment responsible for the accurate and efficient fulfillment of
+            customer orders from start to finish. Daily responsibilities included locating and verifying materials
+            against order specifications, packaging shipments to quality standards, and scanning inventory to maintain
+            real-time accuracy in the system.
+          </p>
           <p class="tl-desc">
-            Contributing to engineering operations at a leading diversified manufacturer. Applying civil and structural
-            engineering principles in an industrial environment while continuing final year of studies at UTEP.
+            Collaborated closely with a warehouse team to coordinate order preparation workflows, balance task loads,
+            and consistently meet daily shipping targets in a fast-paced, deadline-driven environment. Developed strong
+            attention to detail and the ability to maintain accuracy under pressure while managing multiple orders
+            simultaneously.
           </p>
         </div>
       </div>
@@ -870,14 +832,22 @@
           <div class="tl-header">
             <div>
               <div class="tl-role">Engineer Assistant</div>
-              <div class="tl-company">Construction Projects &mdash; Ciudad Juarez, Mexico</div>
+              <div class="tl-company">STO en Servicios &mdash; Ciudad Ju&aacute;rez, Chihuahua, Mexico</div>
             </div>
-            <div class="tl-date">Prior Experience</div>
+            <div class="tl-date">Aug 2024 &mdash; Nov 2025</div>
           </div>
+          <p class="tl-desc" style="margin-bottom:1rem;">
+            Assisted in the planning and execution of industrial renovation projects across multiple manufacturing
+            facilities in Ciudad Ju&aacute;rez. Projects ranged from restroom construction and office buildouts to
+            ADA-compliant accessibility ramps and full electrical system installations &mdash; each requiring strict
+            adherence to client specifications, safety codes, and quality standards.
+          </p>
           <p class="tl-desc">
-            Gained hands-on construction experience on active project sites in Ciudad Juarez. Responsibilities included
-            field inspections, blueprint reading, coordinating with contractors, and applying structural analysis knowledge
-            in a real-world cross-border environment.
+            Performed regular on-site inspections to monitor construction progress, identify potential issues early,
+            and ensure work was completed on schedule. Served as a direct point of contact between contractors and
+            clients, facilitating clear communication to resolve conflicts, adjust timelines, and maintain project
+            momentum. Gained hands-on experience applying civil engineering principles in real industrial and
+            commercial construction environments.
           </p>
         </div>
       </div>
@@ -984,38 +954,6 @@
   </div>
 </section>
 
-<!-- RELOCATION -->
-<section id="relocation">
-  <div class="container">
-    <p class="section-label">Where I Can Go</p>
-    <h2>Open to Relocation</h2>
-    <p class="relocation-intro">
-      Currently based in El Paso, TX &mdash; open to major metro markets across the United States.
-    </p>
-    <div class="cities-grid">
-      <div class="city-card">
-        <div class="city-name">Austin</div>
-        <div class="city-state">Texas</div>
-      </div>
-      <div class="city-card">
-        <div class="city-name">Dallas</div>
-        <div class="city-state">Texas</div>
-      </div>
-      <div class="city-card">
-        <div class="city-name">New York</div>
-        <div class="city-state">New York</div>
-      </div>
-      <div class="city-card">
-        <div class="city-name">Miami</div>
-        <div class="city-state">Florida</div>
-      </div>
-      <div class="city-card open-card">
-        <div class="city-name" style="font-size:.78rem;">Open to More</div>
-        <div class="city-state">Let's talk</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -1030,10 +968,10 @@
       <a href="mailto:alan.delatorreb7@gmail.com" class="contact-btn btn-primary">
         alan.delatorreb7@gmail.com
       </a>
-      <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener" class="contact-btn btn-outline">
+      <a href="https://www.linkedin.com/in/alan-de-la-torreb" target="_blank" rel="noopener" class="contact-btn btn-outline">
         LinkedIn
       </a>
-      <a href="https://github.com/" target="_blank" rel="noopener" class="contact-btn btn-outline">
+      <a href="https://github.com/alandelatorreb7-droid" target="_blank" rel="noopener" class="contact-btn btn-outline">
         GitHub
       </a>
     </div>
