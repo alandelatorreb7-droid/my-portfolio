@@ -282,7 +282,7 @@
     }
 
     .tl-role {
-      font-size: .92rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--white);
       text-transform: uppercase;
@@ -434,6 +434,12 @@
       gap: 3rem;
       align-items: start;
     }
+
+    .proj-layout.proj-layout-solo {
+      grid-template-columns: 1fr;
+    }
+
+    .proj-layout-solo .proj-content { max-width: 760px; }
 
     .proj-visuals {
       display: flex;
@@ -733,12 +739,6 @@
         </div>
         <div class="highlight-item">
           <div class="hi-text">
-            <strong>Currently at Leggett &amp; Platt</strong>
-            <span>Engineering role in El Paso, TX</span>
-          </div>
-        </div>
-        <div class="highlight-item">
-          <div class="hi-text">
             <strong>AI-Augmented Workflow</strong>
             <span>Using Claude Code &amp; GitHub in day-to-day engineering</span>
           </div>
@@ -943,6 +943,62 @@
                   <span></span><span></span><span></span>
                 </div>
                 <img src="assets/buildright-app.png.png" alt="BuildRight estimator interface" loading="lazy" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="proj-layout">
+
+            <!-- LEFT: content -->
+            <div class="proj-content">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-role">PlanRight &mdash; Project Timeline Planner</div>
+                  <div class="proj-tech-row">
+                    <span class="proj-tag">HTML</span>
+                    <span class="proj-tag">CSS</span>
+                    <span class="proj-tag">JavaScript</span>
+                    <span class="proj-tag">html2canvas</span>
+                    <span class="proj-tag">jsPDF</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="proj-subhead">Overview</p>
+              <p class="proj-body">A construction project scheduling tool built for contractors. Enter a project's build phases (permits, foundation, framing, roofing, etc.) with a duration for each, and it automatically calculates a sequential timeline &mdash; each phase starts the day after the previous one ends.</p>
+
+              <p class="proj-subhead">Key Features</p>
+              <ul class="proj-list">
+                <li>Dashboard with key stats: start date, total duration, phase count, and projected finish date</li>
+                <li>Visual color-coded Gantt chart of the full project timeline</li>
+                <li>Progress view with a completion ring, current phase, and days remaining based on today's date</li>
+                <li>Phase-by-phase report table</li>
+                <li>One-click branded PDF export with project and client info, Gantt chart, and summary table &mdash; ready to hand to a client</li>
+              </ul>
+
+              <div class="proj-link-row">
+                <a href="https://plan-right-beta.vercel.app/" target="_blank" rel="noopener" class="contact-btn btn-primary">
+                  Live App
+                </a>
+                <a href="https://github.com/alandelatorreb7-droid" target="_blank" rel="noopener" class="contact-btn btn-outline">
+                  GitHub
+                </a>
+              </div>
+            </div>
+
+            <!-- RIGHT: screenshots -->
+            <div class="proj-visuals">
+              <p class="proj-subhead">Screenshots</p>
+              <div class="screenshot-frame">
+                <div class="screenshot-chrome">
+                  <span></span><span></span><span></span>
+                </div>
+                <img src="assets/planright-app.png" alt="PlanRight project timeline dashboard" loading="lazy" />
               </div>
             </div>
 
