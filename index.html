@@ -371,6 +371,85 @@
       text-transform: uppercase;
     }
 
+    /* ── CERTIFICATES ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .cert-card {
+      background: var(--bg-card);
+      padding: 2.25rem 2.25rem 2.5rem;
+    }
+
+    .cert-figure {
+      display: block;
+      border: 1px solid var(--border-mid);
+      background: #ffffff;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+
+    .cert-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity .2s;
+    }
+
+    .cert-figure:hover img { opacity: .88; }
+
+    .cert-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      line-height: 1.25;
+      margin-bottom: .45rem;
+    }
+
+    .cert-issuer {
+      font-size: .8rem;
+      color: #c0c0c0;
+      margin-bottom: .45rem;
+    }
+
+    .cert-date {
+      font-size: .68rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.25rem;
+    }
+
+    .cert-badges {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .cert-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--white);
+      text-decoration: none;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      padding-bottom: 3px;
+      transition: border-color .15s;
+    }
+
+    .cert-link:hover { border-color: var(--white); }
+
     /* ── PROJECTS ── */
     .proj-tech-row {
       display: flex;
@@ -594,6 +673,7 @@
 
       .tl-header { flex-direction: column; }
       .edu-card { padding: 1.75rem 1.5rem; }
+      .cert-card { padding: 1.75rem 1.5rem 2rem; }
       .contact-links { display: flex; flex-direction: column; }
       .contact-btn { justify-content: center; }
     }
@@ -676,6 +756,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="#certificates">Certificates</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -874,6 +955,34 @@
         <span class="honor-badge">Dean's List &mdash; Fall 2022</span>
         <span class="honor-badge">Dean's List &mdash; Spring 2025</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="container">
+    <p class="section-label">Credentials</p>
+    <h2>Certificates</h2>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <a href="assets/osha-30-certificate.pdf" target="_blank" rel="noopener" class="cert-figure">
+          <img src="assets/osha-30-certificate.png"
+               alt="OSHA 30-Hour Outreach Training Program &mdash; Construction certificate of completion issued to Alan De la Torre by 360training.com"
+               loading="lazy" />
+        </a>
+        <div class="cert-title">OSHA 30-Hour Outreach Training Program &mdash; Construction</div>
+        <div class="cert-issuer">360training.com &mdash; OSHA-authorized outreach provider &amp; IACET accredited</div>
+        <div class="cert-date">Completed September 2026</div>
+        <div class="cert-badges">
+          <span class="honor-badge">30 Credit Hours</span>
+          <span class="honor-badge">3.0 IACET CEUs</span>
+          <span class="honor-badge">Construction Safety</span>
+        </div>
+        <a href="assets/osha-30-certificate.pdf" target="_blank" rel="noopener" class="cert-link">View Certificate (PDF) &rarr;</a>
+      </div>
+
     </div>
   </div>
 </section>
