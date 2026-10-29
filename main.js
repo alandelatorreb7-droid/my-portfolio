@@ -15,14 +15,22 @@ const links    = document.querySelectorAll('.nav-links a');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      links.forEach(l => l.style.color = '');
+      links.forEach(l => l.classList.remove('active'));
       const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-      if (active) active.style.color = '#ffffff';
+      if (active) active.classList.add('active');
     }
   });
 }, { rootMargin: '-40% 0px -55% 0px' });
 
 sections.forEach(s => observer.observe(s));
+
+/* ── NAV GLASS ON SCROLL ── */
+(function () {
+  const nav = document.querySelector('nav');
+  const update = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
 
 /* ── TYPEWRITER ── */
 (function () {

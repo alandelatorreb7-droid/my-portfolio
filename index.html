@@ -6,19 +6,24 @@
   <title>Alan de la Torre | Civil Engineering Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg:         #000000;
-      --bg-card:    #0d0d0d;
-      --bg-card2:   #131313;
-      --border:     #1c1c1c;
-      --border-mid: #2e2e2e;
+      --bg-card:    #0a0a0a;
+      --bg-card2:   #111111;
+      --border:     #1a1a1a;
+      --border-mid: #2a2a2a;
       --white:      #ffffff;
       --gray:       #888888;
-      --gray-dim:   #555555;
+      --gray-light: #a0a0a0;
+      --gray-dim:   #6e6e6e;
+      --glow-blue:  #1a4a8a;
+      --glow-deep:  #1a3a6b;
+      --glow-amber: #c47b2b;
+      --font-display: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -36,23 +41,41 @@
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: transparent;
       z-index: 100;
       padding: 0 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 52px;
-      border-bottom: 1px solid var(--border);
+      height: 60px;
+      transition: background .4s ease, backdrop-filter .4s ease, -webkit-backdrop-filter .4s ease;
     }
+
+    nav::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--glow-blue) 25%, var(--glow-amber) 70%, transparent 100%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      pointer-events: none;
+    }
+
+    nav.scrolled {
+      background: rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+    }
+
+    nav.scrolled::after { opacity: .7; }
 
     .nav-logo {
       color: var(--white);
-      font-weight: 700;
-      font-size: .68rem;
-      letter-spacing: 3px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: .72rem;
+      letter-spacing: .3em;
       text-transform: uppercase;
     }
 
@@ -63,16 +86,35 @@
     }
 
     .nav-links a {
+      position: relative;
       color: var(--gray);
       text-decoration: none;
       font-size: .65rem;
       font-weight: 500;
-      letter-spacing: 2.5px;
+      letter-spacing: .25em;
       text-transform: uppercase;
       transition: color .15s;
     }
 
     .nav-links a:hover { color: var(--white); }
+
+    .nav-links a.active { color: var(--white); }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--glow-amber);
+      box-shadow: 0 0 8px var(--glow-amber);
+      transform: translateX(-50%) scale(0);
+      transition: transform .25s ease;
+    }
+
+    .nav-links a.active::after { transform: translateX(-50%) scale(1); }
 
     .hamburger {
       display: none;
@@ -94,46 +136,60 @@
 
     /* ── HERO ── */
     #hero {
+      position: relative;
       min-height: 100vh;
-      background: var(--bg);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 100px 3rem 7rem;
+      padding: 120px 3rem 6rem;
+    }
+
+    .hero-arrow {
+      position: absolute;
+      top: 92px;
+      right: 3rem;
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--gray-light);
+      opacity: .7;
+      pointer-events: none;
+      user-select: none;
     }
 
     .hero-inner { max-width: 1100px; width: 100%; }
 
     .hero-eyebrow {
-      font-size: .65rem;
-      color: var(--gray);
-      letter-spacing: 4px;
+      font-size: .66rem;
+      color: var(--gray-light);
+      letter-spacing: .35em;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 2.25rem;
     }
 
     .hero-inner h1 {
-      font-size: clamp(3.8rem, 11.5vw, 9rem);
+      font-family: var(--font-display);
+      font-size: clamp(3.8rem, 11.5vw, 9.5rem);
       color: var(--white);
       font-weight: 900;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       text-transform: uppercase;
       line-height: 0.88;
-      margin-bottom: 3.5rem;
+      margin-bottom: 4.5rem;
     }
 
     .hero-meta-row {
       display: flex;
       flex-wrap: wrap;
       gap: .5rem 2rem;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
       align-items: center;
     }
 
     .hero-meta {
-      font-size: .7rem;
-      color: var(--gray);
-      letter-spacing: 2px;
+      font-size: .66rem;
+      color: var(--gray-light);
+      letter-spacing: .25em;
       text-transform: uppercase;
     }
 
@@ -161,8 +217,8 @@
 
     /* ── SECTIONS ── */
     section {
-      padding: 7rem 3rem;
-      border-top: 1px solid var(--border);
+      padding: 9rem 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     section#hero { border-top: none; }
@@ -171,21 +227,22 @@
 
     .section-label {
       text-transform: uppercase;
-      letter-spacing: 3.5px;
+      letter-spacing: .35em;
       font-size: .62rem;
-      color: var(--gray-dim);
+      color: var(--gray-light);
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     h2 {
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
       color: var(--white);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: -0.025em;
-      margin-bottom: 4rem;
-      line-height: .95;
+      letter-spacing: -0.03em;
+      margin-bottom: 4.5rem;
+      line-height: .92;
     }
 
     /* ── ABOUT ── */
@@ -231,18 +288,16 @@
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: 2.5rem 2rem;
     }
 
     .skill-card {
-      background: var(--bg-card);
-      padding: 1.5rem 1.75rem;
-      transition: background .15s;
+      border-left: 1px solid var(--border-mid);
+      padding: .2rem 0 .2rem 1.25rem;
+      transition: border-color .15s;
     }
 
-    .skill-card:hover { background: var(--bg-card2); }
+    .skill-card:hover { border-color: var(--gray-light); }
 
     .skill-name {
       font-weight: 700;
@@ -263,14 +318,12 @@
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
     }
 
-    .tl-item { background: var(--bg); }
+    .tl-item { border-top: 1px solid var(--border-mid); }
+    .tl-item:last-child { border-bottom: 1px solid var(--border-mid); }
 
-    .tl-card { padding: 2.25rem 2.25rem; }
+    .tl-card { padding: 3rem 0; }
 
     .tl-header {
       display: flex;
@@ -298,9 +351,9 @@
 
     .tl-date {
       font-size: .62rem;
-      color: var(--gray);
+      color: var(--gray-light);
       text-transform: uppercase;
-      letter-spacing: 2.5px;
+      letter-spacing: .25em;
       white-space: nowrap;
       border: 1px solid var(--border-mid);
       padding: .25rem .75rem;
@@ -312,12 +365,63 @@
       line-height: 1.75;
     }
 
-    /* ── EDUCATION ── */
-    .edu-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 2.75rem 2.5rem;
+    .tl-feature {
+      margin-top: 2.25rem;
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border-mid);
     }
+
+    .tl-feature .proj-subhead { margin-top: 0; margin-bottom: .5rem; }
+
+    .tl-feature-title {
+      font-size: .95rem;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: .75rem;
+    }
+
+    .tl-feature-figures {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.75rem;
+    }
+
+    .tl-figure { margin: 0; }
+
+    .tl-figure-frame {
+      border: 1px solid var(--border-mid);
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+
+    .tl-figure-frame img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(.15) contrast(1.04);
+      transition: filter .3s ease, opacity .3s ease;
+    }
+
+    .tl-figure:hover .tl-figure-frame img {
+      filter: grayscale(0) contrast(1);
+      opacity: .92;
+    }
+
+    .tl-figure figcaption {
+      font-size: .62rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      line-height: 1.6;
+      margin-top: .7rem;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card { padding: 0; }
 
     .edu-header {
       display: flex;
@@ -375,15 +479,10 @@
     .cert-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: 4rem;
     }
 
-    .cert-card {
-      background: var(--bg-card);
-      padding: 2.25rem 2.25rem 2.5rem;
-    }
+    .cert-card { padding: 0; }
 
     .cert-figure {
       display: block;
@@ -472,9 +571,9 @@
     .proj-subhead {
       font-size: .62rem;
       font-weight: 700;
-      color: var(--gray-dim);
+      color: var(--gray);
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: .3em;
       margin-top: 1.5rem;
       margin-bottom: .65rem;
     }
@@ -498,9 +597,7 @@
     .proj-link-row {
       display: inline-flex;
       flex-wrap: wrap;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: .75rem;
       margin-top: 1.75rem;
     }
 
@@ -593,12 +690,9 @@
     }
 
     .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
       display: inline-flex;
+      flex-wrap: wrap;
+      gap: .75rem;
     }
 
     .contact-btn {
@@ -614,6 +708,7 @@
     }
 
     .btn-primary {
+      border: 1px solid var(--white);
       background: var(--white);
       color: var(--bg);
     }
@@ -621,20 +716,21 @@
     .btn-primary:hover { background: #e8e8e8; }
 
     .btn-outline {
-      background: var(--bg-card);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.28);
       color: var(--white);
     }
 
-    .btn-outline:hover { background: var(--bg-card2); }
+    .btn-outline:hover { border-color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--gray-dim);
+      padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--gray);
       font-size: .62rem;
-      letter-spacing: 2.5px;
+      letter-spacing: .3em;
       text-transform: uppercase;
     }
 
@@ -646,8 +742,8 @@
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 52px; left: 0; right: 0;
-        background: var(--bg);
+        top: 60px; left: 0; right: 0;
+        background: rgba(0, 0, 0, 0.95);
         padding: 2rem 1.5rem;
         gap: 1.75rem;
         border-bottom: 1px solid var(--border);
@@ -656,8 +752,9 @@
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
 
-      #hero { padding: 80px 1.5rem 5rem; }
-      section { padding: 5rem 1.5rem; }
+      #hero { padding: 100px 1.5rem 4.5rem; }
+      .hero-arrow { top: 80px; right: 1.5rem; font-size: 1.3rem; }
+      section { padding: 6rem 1.5rem; }
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -672,8 +769,7 @@
       }
 
       .tl-header { flex-direction: column; }
-      .edu-card { padding: 1.75rem 1.5rem; }
-      .cert-card { padding: 1.75rem 1.5rem 2rem; }
+      .tl-feature-figures { grid-template-columns: 1fr; gap: 1.75rem; }
       .contact-links { display: flex; flex-direction: column; }
       .contact-btn { justify-content: center; }
     }
@@ -683,23 +779,48 @@
       .skills-grid { grid-template-columns: 1fr 1fr; }
     }
 
-    /* ── ANIMATED GRID BACKGROUND ── */
+    /* ── AURORA BLOB ── */
     body::before {
+      content: '';
+      position: fixed;
+      top: 38%;
+      left: 58%;
+      width: min(110vmax, 1400px);
+      height: min(110vmax, 1400px);
+      z-index: -2;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 42% 44%, rgba(26, 74, 138, 0.55) 0%, rgba(26, 58, 107, 0.42) 26%, transparent 52%),
+        radial-gradient(circle at 50% 50%, transparent 30%, rgba(196, 123, 43, 0.26) 46%, rgba(196, 123, 43, 0.08) 60%, transparent 70%),
+        radial-gradient(circle at 64% 62%, rgba(196, 123, 43, 0.18) 0%, transparent 38%);
+      filter: blur(70px);
+      transform: translate(-50%, -50%) scale(1);
+      opacity: .75;
+      animation: auroraBreathe 22s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+
+    @keyframes auroraBreathe {
+      0%   { transform: translate(-50%, -50%) scale(1)    rotate(0deg);  opacity: .65; }
+      50%  { transform: translate(-46%, -53%) scale(1.12) rotate(14deg); opacity: .85; }
+      100% { transform: translate(-53%, -48%) scale(.94)  rotate(-8deg); opacity: .7; }
+    }
+
+    /* ── GRAIN ── */
+    body::after {
       content: '';
       position: fixed;
       inset: 0;
       z-index: -1;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 64px 64px;
-      animation: gridScroll 30s linear infinite;
+      background-image: url('assets/grain.svg');
+      background-size: 240px 240px;
+      opacity: .07;
       pointer-events: none;
     }
 
-    @keyframes gridScroll {
-      0%   { background-position: 0 0; }
-      100% { background-position: 64px 64px; }
+    @media (prefers-reduced-motion: reduce) {
+      body::before { animation: none; }
     }
 
     /* ── FADE IN ON SCROLL ── */
@@ -716,12 +837,11 @@
 
     /* ── PROJECT CARD LIFT ── */
     #projects .tl-item {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     #projects .tl-item:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
     }
 
     /* ── TYPEWRITER CURSOR ── */
@@ -767,6 +887,7 @@
 
 <!-- HERO -->
 <section id="hero">
+  <span class="hero-arrow" aria-hidden="true">&#8599;</span>
   <div class="hero-inner">
     <p class="hero-eyebrow">Civil Engineering Portfolio</p>
     <h1>Alan de la Torre</h1>
@@ -859,7 +980,7 @@
       </div>
       <div class="skill-card">
         <div class="skill-name">GitHub</div>
-        <div class="skill-cat">Version Control</div>
+        <div class="skill-cat">Open Source &amp; Community</div>
       </div>
       <div class="skill-card">
         <div class="skill-name">Bilingual EN / ES</div>
@@ -930,6 +1051,36 @@
             momentum. Gained hands-on experience applying civil engineering principles in real industrial and
             commercial construction environments.
           </p>
+          <div class="tl-feature">
+            <p class="proj-subhead">Featured Project</p>
+            <div class="tl-feature-title">Two-Silo Foundation</div>
+            <p class="tl-desc">
+              Supported the construction of a reinforced concrete foundation for two 44-ton silos at an active
+              manufacturing plant. The scope included removing existing pavement, excavating and compacting the soil,
+              placing the reinforced slab, and embedding anchor bolts for both silos. Before the pour, I inspected the
+              rebar and soil compaction and verified the anchor bolt positions, which were held with plywood templates
+              so they would align with each silo&rsquo;s base plates. Because the site sat next to an active loading
+              dock, I also coordinated with the crew and plant staff to keep the area safe and operations running.
+            </p>
+            <div class="tl-feature-figures">
+              <figure class="tl-figure">
+                <div class="tl-figure-frame">
+                  <img src="assets/silo-foundation-rebar.jpg"
+                       alt="Formwork and two mats of tied rebar in place before the pour, with plywood templates holding the silo anchor bolts in position"
+                       loading="lazy" />
+                </div>
+                <figcaption>Rebar &amp; anchor bolt templates before the pour</figcaption>
+              </figure>
+              <figure class="tl-figure">
+                <div class="tl-figure-frame">
+                  <img src="assets/silo-foundation-poured.jpg"
+                       alt="The finished reinforced concrete slab with exposed anchor bolts, cordoned off with caution tape beside an active loading dock"
+                       loading="lazy" />
+                </div>
+                <figcaption>Finished slab with exposed anchor bolts</figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
       </div>
 
